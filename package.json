@@ -1,0 +1,89 @@
+{
+	"name": "@keeveestore/mongodb",
+	"version": "0.1.0",
+	"description": "MongoDB Implementation of KeeVee Store.",
+	"homepage": "https://github.com/keeveestore/mongodb",
+	"bugs": {
+		"url": "https://github.com/keeveestore/mongodb/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:keeveestore/mongodb.git"
+	},
+	"license": "MIT",
+	"author": "Brian Faust <hello@basecode.sh>",
+	"files": [
+		"dist"
+	],
+	"main": "dist/index",
+	"types": "dist/index",
+	"scripts": {
+		"build": "yarn clean && tsc",
+		"build:watch": "yarn build -w",
+		"clean": "rimraf .coverage dist tmp",
+		"format": "yarn lint && yarn prettier",
+		"lint": "tslint -c tslint.json -p tslint.json 'src/**/*.ts' --fix",
+		"prepublishOnly": "yarn format && yarn test && yarn build",
+		"prettier": "prettier --write \"./*.{ts,js,json,md}\" \"./**/*.{ts,js,json,md}\"",
+		"test": "jest --forceExit",
+		"test:watch": "jest  --forceExit --watchAll"
+	},
+	"jest": {
+		"bail": true,
+		"collectCoverage": true,
+		"collectCoverageFrom": [
+			"src/**/*.ts",
+			"!src/index.ts",
+			"!**/node_modules/**"
+		],
+		"coverageDirectory": "<rootDir>/.coverage",
+		"coverageReporters": [
+			"json",
+			"lcov",
+			"text",
+			"clover",
+			"html"
+		],
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"jsx",
+			"json",
+			"node"
+		],
+		"setupFilesAfterEnv": [
+			"jest-extended"
+		],
+		"testEnvironment": "node",
+		"testMatch": [
+			"**/*.test.ts"
+		],
+		"transform": {
+			"^.+\\.tsx?$": "ts-jest"
+		},
+		"verbose": true
+	},
+	"dependencies": {
+		"@keeveestore/keeveestore": "^0.1.0",
+		"mongojs": "^2.6.0",
+		"pify": "^4.0.1"
+	},
+	"devDependencies": {
+		"@keeveestore/test-suite": "^0.1.0",
+		"@faustbrian/tslint": "^0.1.3",
+		"@types/jest": "^24.0.12",
+		"@types/node": "^12.0.0",
+		"@types/pify": "^3.0.2",
+		"@types/prettier": "^1.16.3",
+		"@types/rimraf": "^2.0.2",
+		"codecov": "^3.4.0",
+		"jest": "^24.8.0",
+		"jest-extended": "^0.11.1",
+		"prettier": "^1.17.0",
+		"rimraf": "^2.6.3",
+		"ts-jest": "^24.0.2",
+		"tslint": "^5.16.0",
+		"typescript": "^3.4.5"
+	}
+}
