@@ -4,14 +4,11 @@ import MongoDB from "mongojs";
 import pify from "pify";
 
 export class StoreAsync<K, T> implements IKeyValueStoreAsync<K, T> {
-	private readonly store: MongoDB;
-	private readonly collection: MongoDB;
+	private constructor(private readonly store: MongoDB, private readonly collection: MongoDB) {}
 
-	public constructor(opts: { connection: string; collection: string }) {
-		const connection: MongoDB = MongoDB(opts.connection);
-
-		this.collection = connection.collection(opts.collection);
-		this.collection.createIndex(
+	public static async new<K, T>(opts: { connection: string; collection: string }): Promise<StoreAsync<K, T>> {
+		const collection = MongoDB(opts.connection).collection(opts.collection);
+		collection.createIndex(
 			{ key: 1 },
 			{
 				background: true,
@@ -20,10 +17,12 @@ export class StoreAsync<K, T> implements IKeyValueStoreAsync<K, T> {
 		);
 
 		// tslint:disable-next-line: no-inferred-empty-object-type
-		this.store = ["update", "findOne", "remove", "count", "find"].reduce((mongo, method) => {
-			mongo[method] = pify(this.collection[method].bind(this.collection));
+		const store = ["update", "findOne", "remove", "count", "find"].reduce((mongo, method) => {
+			mongo[method] = pify(collection[method].bind(collection));
 			return mongo;
-		}, {});
+		},                                                                    {});
+
+		return new StoreAsync<K, T>(store, collection);
 	}
 
 	public async all(): Promise<[K, T][]> {
