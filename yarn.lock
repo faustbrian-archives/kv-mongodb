@@ -332,6 +332,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/tsconfig/-/tsconfig-0.3.0.tgz#610717352725793eb02511dfe25622fb63568ed3"
   integrity sha512-dc6iqngaTOgnW6uZEj75FtIv1auLICDWRM8nrB8LJDjVFRS3FPa8okVhAgFoEC4c1orm0PLPQE0M+pJQo8Ag8Q==
 
+"@sindresorhus/tsconfig@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/tsconfig/-/tsconfig-0.4.0.tgz#de03022de75a26a48fe7596674f2cfaaa142371f"
+  integrity sha512-5b9KULv6SGKZ/Ka7EzLxcqcnD9WuZ1wm/RwfVw4UHr+HoMP7FRpvBKbQ0TIeBOCeSyE5zzPTjYmRgfZnJ3Ifxw==
+
 "@types/babel__core@^7.1.0":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.1.tgz#ce9a9e5d92b7031421e1d0d74ae59f572ba48be6"
@@ -454,12 +459,12 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
   integrity sha512-SOhuU4wNBxhhTHxYaiG5NY4HBhDIDnJF60GU+2LqHAdKKer86//e4yg69aENCtQ04n0ovz+tq2YPME5t5yp4pw==
 
-"@typeskrift/tsconfig@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@typeskrift/tsconfig/-/tsconfig-0.1.0.tgz#bb18d6085c43f50a390c6828bbdbd7cac760a7eb"
-  integrity sha512-DDNshGLe/tzS4sHWoqD11bLvaEKWTfr1JlY86pRXOs2HTpkRlhqPM7I4C2b9+cFDYQFloTqDvIDRik1OLzQzfQ==
+"@typeskrift/tsconfig@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@typeskrift/tsconfig/-/tsconfig-0.1.1.tgz#61e5b417dcaf5707e527480bc02f628d08e23082"
+  integrity sha512-22Imx4oRYh7fKcJ647XIwndOxGbeN+om/mrsnQguYetZIAgNg/snE+19bLVRX75LFmXNHdkM18GZ3eQ+HNiyww==
   dependencies:
-    "@sindresorhus/tsconfig" "^0.3.0"
+    "@sindresorhus/tsconfig" "^0.4.0"
 
 abab@^2.0.0:
   version "2.0.0"
