@@ -4,23 +4,32 @@ import MongoDB from "mongojs";
 import pify from "pify";
 
 export class StoreAsync<K, T> implements IKeyValueStoreAsync<K, T> {
-	private constructor(private readonly store: MongoDB, private readonly collection: MongoDB) {}
+	private constructor(
+		private readonly store: MongoDB,
+		private readonly collection: MongoDB
+	) {}
 
-	public static async new<K, T>(opts: { connection: string; collection: string }): Promise<StoreAsync<K, T>> {
+	public static async new<K, T>(opts: {
+		connection: string;
+		collection: string;
+	}): Promise<StoreAsync<K, T>> {
 		const collection = MongoDB(opts.connection).collection(opts.collection);
 		collection.createIndex(
 			{ key: 1 },
 			{
 				background: true,
 				unique: true,
-			},
+			}
 		);
 
 		// tslint:disable-next-line: no-inferred-empty-object-type
-		const store = ["update", "findOne", "remove", "count", "find"].reduce((mongo, method) => {
-			mongo[method] = pify(collection[method].bind(collection));
-			return mongo;
-		},                                                                    {});
+		const store = ["update", "findOne", "remove", "count", "find"].reduce(
+			(mongo, method) => {
+				mongo[method] = pify(collection[method].bind(collection));
+				return mongo;
+			},
+			{}
+		);
 
 		return new StoreAsync<K, T>(store, collection);
 	}
@@ -28,19 +37,28 @@ export class StoreAsync<K, T> implements IKeyValueStoreAsync<K, T> {
 	public async all(): Promise<[K, T][]> {
 		const documents = await this.store.find();
 
-		return documents ? documents.map((document: { key: K; value: T }) => [document.key, document.value]) : [];
+		return documents
+			? documents.map((document: { key: K; value: T }) => [
+					document.key,
+					document.value,
+			  ])
+			: [];
 	}
 
 	public async keys(): Promise<K[]> {
 		const documents = await this.store.find();
 
-		return documents ? documents.map((document: { key: K; value: T }) => document.key) : [];
+		return documents
+			? documents.map((document: { key: K; value: T }) => document.key)
+			: [];
 	}
 
 	public async values(): Promise<T[]> {
 		const documents = await this.store.find();
 
-		return documents ? documents.map((document: { key: K; value: T }) => document.value) : [];
+		return documents
+			? documents.map((document: { key: K; value: T }) => document.value)
+			: [];
 	}
 
 	public async get(key: K): Promise<T | undefined> {
@@ -76,7 +94,9 @@ export class StoreAsync<K, T> implements IKeyValueStoreAsync<K, T> {
 	}
 
 	public async putMany(values: [K, T][]): Promise<boolean[]> {
-		return Promise.all(values.map(async (value: [K, T]) => this.put(value[0], value[1])));
+		return Promise.all(
+			values.map(async (value: [K, T]) => this.put(value[0], value[1]))
+		);
 	}
 
 	public async has(key: K): Promise<boolean> {

@@ -2,21 +2,17 @@
 	"name": "@konceiver/kv-mongodb",
 	"version": "0.1.0",
 	"description": "MongoDB Implementation of KeeVee Store.",
-	"homepage": "https://github.com/konceiver/kv-mongodb",
-	"bugs": {
-		"url": "https://github.com/konceiver/kv-mongodb/issues"
-	},
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git@github.konceiver/kv-mongodb.git"
 	},
-	"license": "MIT",
 	"author": "Brian Faust <brian@konceiver.dev>",
+	"homepage": "https://github.com/konceiver/kv-mongodb",
+	"bugs": {
+		"url": "https://github.com/konceiver/kv-mongodb/issues"
+	},
 	"main": "dist/index",
-	"types": "dist/index",
-	"files": [
-		"dist"
-	],
 	"scripts": {
 		"build": "tease build",
 		"format": "tease format",
@@ -26,6 +22,9 @@
 		"specs": "tease specs",
 		"test": "tease test"
 	},
+	"files": [
+		"dist"
+	],
 	"dependencies": {
 		"@konceiver/kv": "^1.0.0",
 		"mongojs": "^3.1.0",
@@ -35,5 +34,6 @@
 		"@konceiver/kv-test-suite": "^1.0.0",
 		"@konceiver/tease": "^1.6.1",
 		"@types/pify": "^3.0.2"
-	}
+	},
+	"types": "dist/index"
 }
