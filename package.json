@@ -18,7 +18,7 @@
 		"format": "tease format",
 		"lint": "tease lint",
 		"prepare": "tease install && tease build",
-		"publish": "tease publish",
+		"publish": "npm run prepare && npm publish --access=public",
 		"specs": "tease specs",
 		"test": "tease test"
 	},
@@ -32,7 +32,7 @@
 	},
 	"devDependencies": {
 		"@konceiver/kv-test-suite": "^1.0.0",
-		"@konceiver/tease": "^1.6.1",
+		"@konceiver/tease": "^2.0.0",
 		"@types/pify": "^3.0.2"
 	},
 	"types": "dist/index"
