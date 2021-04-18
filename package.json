@@ -26,14 +26,14 @@
 		"dist"
 	],
 	"dependencies": {
-		"@konceiver/kv": "^1.0.0",
+		"@konceiver/kv": "^1.0.1",
 		"mongojs": "^3.1.0",
 		"pify": "^5.0.0"
 	},
 	"devDependencies": {
 		"@konceiver/kv-test-suite": "^1.0.0",
-		"@konceiver/tease": "^2.0.0",
-		"@types/pify": "^3.0.2"
+		"@konceiver/tease": "^2.0.1",
+		"@types/pify": "^5.0.0"
 	},
 	"types": "dist/index"
 }
