@@ -33,7 +33,7 @@
 	"devDependencies": {
 		"@konceiver/kv-test-suite": "^1.0.0",
 		"@konceiver/tease": "^2.0.1",
-		"@types/pify": "^5.0.0"
+		"@types/pify": "^5.0.1"
 	},
 	"types": "dist/index"
 }
